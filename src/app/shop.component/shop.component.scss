@@ -1,0 +1,63 @@
+
+.shop-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.book-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    gap: 32px;
+    width: 700px;
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.2);
+
+    button{        
+        font-size: 24px;
+        border-radius: 8px;
+        padding: 8px 16px;
+    }
+}
+
+.book{
+    flex:1;
+}
+
+.title-wrapper{
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+}
+
+.title{
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.author{    
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.description{
+    padding: 8px 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;  
+}
+
+.pages{
+    font-size: 18px;
+    color:rgba(0, 0, 0, 0.6);
+}
+
+.price{
+    font-weight: 700;
+    font-size: 24px;
+}

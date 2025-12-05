@@ -1,0 +1,43 @@
+
+.storage-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.book-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    gap: 16px;
+    width: 700px;
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.2);
+    font-size: 24px;
+
+    button{        
+        font-size: 18px;
+        border-radius: 8px;
+        padding: 8px 16px;
+    }
+}
+
+.id{
+    min-width: 30px;
+}
+
+.title{
+    min-width: 220px;
+}
+
+.weight{
+    min-width: 120px;
+    text-align: center;
+}
+
+.amount{
+    min-width: 150px;
+    text-align: center;
+}
+
+

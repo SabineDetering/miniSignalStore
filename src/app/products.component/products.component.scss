@@ -1,0 +1,15 @@
+.products-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.book-wrapper{
+    display: flex;
+    align-items: center;
+    padding: 24px;
+    gap: 32px;
+    width: 700px;
+    border-radius: 8px;
+    border: 2px solid rgba(0,0,0,0.2);
+}

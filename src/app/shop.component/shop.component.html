@@ -1,0 +1,18 @@
+<div class="shop-container">
+    @for(book of store.availableBooks(); track book.id){
+        <div class=" book-wrapper ">
+            <div class="book">
+                <div class="title-wrapper">
+                    <div class="title">{{ book.title }}</div>
+                    <div class="author">{{ book.author }}</div>
+                </div>
+                <div class="description">{{ book.description }}</div>
+                <div class="details">
+                    <div class="pages">{{ book.numberOfPages }} Seiten</div>
+                    <div class="price">{{ book.price.toFixed(2) }} €</div>
+                </div>
+            </div>
+            <button (click)="store.order(book.id, 1)">Order</button>
+        </div>
+    }
+</div>
