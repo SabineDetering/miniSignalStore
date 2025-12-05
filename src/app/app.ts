@@ -1,12 +1,37 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+import { MenuModule } from 'primeng/menu';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MenuModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('miniSignalStore');
+  protected readonly title = signal('Mini Signal Store');
+  private readonly router = inject(Router);
+
+  protected navItems = [
+            {               
+                items: [
+                    {
+                        label: 'Shop',
+                        icon: 'pi pi-shopping-bag',
+                        routerLink: '/shop'
+                    },
+                    {
+                        label: 'Produkte',
+                        icon: 'pi pi-book',
+                        routerLink: '/products'
+                    },
+                    {
+                        label: 'Lager',
+                        icon: 'pi pi-box',
+                        routerLink: '/storage'
+                    }
+                ]
+            }
+        ];
+    
 }

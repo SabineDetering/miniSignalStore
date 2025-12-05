@@ -7,10 +7,10 @@ export class Book {
 constructor(
     public title: string, 
     public author: string,
-     public price: number, 
-     public numberOfPages: number, 
-     public weightInGramm: number, 
-     public description ='' 
+    public price: number, 
+    public numberOfPages: number, 
+    public weightInGramm: number, 
+    public description ='' 
 ){
     Book.currentId +=1;
     this.id = Book.currentId;

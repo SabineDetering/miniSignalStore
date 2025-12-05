@@ -1,5 +1,9 @@
 <div class="shop-container">
     @for(book of store.availableBooks(); track book.id){
+
+        <!-- calculate the value only once per book rendering -->
+        @let stockQuantity = store.stock()[book.id] ?? 0; 
+
         <div class=" book-wrapper ">
             <div class="book">
                 <div class="title-wrapper">
@@ -12,7 +16,22 @@
                     <div class="price">{{ book.price.toFixed(2) }} €</div>
                 </div>
             </div>
-            <button (click)="store.order(book.id, 1)">Order</button>
+            <div>
+                <div class="order-wrapper">
+                  <p-inputnumber type="number" 
+                    buttonLayout="horizontal" 
+                    fluid
+                    [(ngModel)]="amountsToOrder[book.id]"  
+                    [showButtons]="true" 
+                    [min]="1"  />
+                  <p-button 
+                    [disabled] ="amountsToOrder[book.id]() > stockQuantity"
+                    (click)="store.order(book.id, amountsToOrder[book.id]())">
+                    Bestellen
+                  </p-button>
+                </div>
+               <span style="display: inline-block; margin-top: 8px;" >Lagerbestand: {{ stockQuantity }}</span> 
+            </div>
         </div>
     }
 </div>
