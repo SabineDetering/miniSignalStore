@@ -17,9 +17,9 @@ export const initialBookShopState: BookShopState = {
 
 export const BookShopStore = signalStore(
     {providedIn: 'root'},
-    withState(initialData),
-    withComputed(store => (
-        {
+    withImmutableState(initialData),
+    withDevtools('bookstore'),
+    withComputed(store => ({
             availableBooks: computed(()=> store.books().filter(book => store.stock()[book.id] >0))
         }
     )),
