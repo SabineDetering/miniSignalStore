@@ -1,14 +1,100 @@
 <div class="products-container">
+    <p-button class="add-button" icon="pi pi-plus" [raised]="true" [rounded]="true" (click)="openEditDialog()" />
     @for(book of store.books(); track book){
       <div class=" book-wrapper ">
         <div class="book">
-            <div class="id">ID: {{ book.id }}</div>
-            <div class="title"> Titel: {{ book.title }}</div>
-            <div class="author"> Autor: {{ book.author }}</div>
-            <div class="description"> Beschreibung: {{ book.description }}</div>
-                <div class="pages"> Seiten: {{ book.numberOfPages }}</div>
-                <div class="price"> Preis: {{ book.price.toFixed(2) }} €</div>
+            <div class="id"><strong>ID:</strong> {{ book.id }}</div>
+            <div class="title"> <strong>Titel:</strong> {{ book.title }}</div>
+            <div class="author"> <strong>Autor:</strong> {{ book.author }}</div>
+            <div class="description"> <strong>Beschreibung:</strong> {{ book.description }}</div>
+            <div class="pages"> <strong>Seiten:</strong> {{ book.numberOfPages }}</div>
+            <div class="weight"> <strong>Gewicht (g):</strong> {{ book.weightInGramm }}</div>
+            <div class="price"> <strong>Preis:</strong> {{ book.price.toFixed(2) }} €</div>
             </div>
+      <p-button  (click)="openEditDialog(book.id)">Edit</p-button>
       </div>
     }
 </div>
+
+<p-dialog contentStyleClass="edit-dialog" header="Edit Book Details" [(visible)]="isEditDialogVisible" [modal]="true">
+    <form [attr.novalidate]="false">
+        <p-iftalabel>
+            <input 
+            pInputText 
+            fluid
+            id="title"
+            [field]="bookForm.title" />
+            <label for="title">Titel</label> 
+            @if (bookForm.title().touched() && bookForm.title().invalid()) {
+                <p-message severity="error" size="small" variant="simple">{{ bookForm.title().errors()[0].message }}</p-message>
+    }
+        </p-iftalabel>
+        <p-iftalabel>
+            <input 
+            pInputText 
+            fluid
+            id="author"
+            [field]="bookForm.author"/>
+            <label for="author">Autor</label>
+            @if (bookForm.author().touched() && bookForm.author().invalid()) {
+                <p-message severity="error" size="small" variant="simple">{{ bookForm.author().errors()[0].message }}</p-message>
+            }
+        </p-iftalabel> 
+        <!-- <p-iftalabel>
+            <textarea 
+            pTextarea   
+            fluid
+            id="description"
+            [field]="bookForm.description"
+            rows="4" 
+            style="resize: none"></textarea> 
+            <label for="description">Beschreibung</label>
+        </p-iftalabel> -->
+        <p-iftalabel>
+            <input 
+            pInputText 
+            fluid
+            id="description"
+            [field]="bookForm.description"
+            rows="4" 
+            style="resize: none" />
+            <label for="description">Beschreibung</label>
+        </p-iftalabel>
+        <p-iftalabel>
+            <p-inputnumber 
+            fluid
+            id="numberOfPages"
+            [field]="bookForm.numberOfPages"/>
+            <label for="numberOfPages">Seiten</label>
+            @if (bookForm.numberOfPages().touched() && bookForm.numberOfPages().invalid()) {
+                <p-message severity="error" size="small" variant="simple">{{ bookForm.numberOfPages().errors()[0].message }}</p-message>
+            }
+        </p-iftalabel>       
+        <p-ifta-label>
+            <p-inputnumber 
+            fluid
+            id="weightInGramm"
+            [field]="bookForm.weightInGramm"/>
+            <label for="weightInGramm">Gewicht (g)</label>
+            @if (bookForm.weightInGramm().touched() && bookForm.weightInGramm().invalid()) {
+                <p-message severity="error" size="small" variant="simple">{{ bookForm.weightInGramm().errors()[0].message }}</p-message>
+            }
+        </p-ifta-label>       
+        <p-iftalabel>
+            <p-inputnumber 
+            mode="currency"                    
+            currency="EUR" 
+            fluid
+            id="price"
+            [field]="bookForm.price"/>
+            <label for="price">Preis</label>
+            @if (bookForm.price().touched() && bookForm.price().invalid()) {
+                <p-message severity="error" size="small" variant="simple">{{ bookForm.price().errors()[0].message }}</p-message>
+            }
+        </p-iftalabel>         
+    </form> 
+    <ng-template #footer>
+        <p-button label="Cancel" severity="secondary" (onClick)="cancelEdit()" />
+        <p-button label="Save" [disabled]="!bookForm().valid()" (onClick)="saveBook()" />
+    </ng-template>
+</p-dialog>

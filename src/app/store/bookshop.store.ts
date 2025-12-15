@@ -28,8 +28,17 @@ export const BookShopStore = signalStore(
             patchState(store, (state) =>({ ...state, stock: {...store.stock(), [bookId]: store.stock()[bookId] - amount}}))
         },
         received( bookId: Id, amount: number ){
-            patchState(store, (state) =>({ ...state, stock: {...store.stock(), [bookId]: store.stock()[bookId] + amount}}))
-        }        
+            patchState(store, (state) =>({ ...state, stock: {...store.stock(), [bookId]: (store.stock()[bookId] ?? 0) + amount}}))
+        },
+        addOrUpdateBook( book: Book ){
+            const existingBookIndex = store.books().findIndex(b => b.id === book.id);
+            const updatedBooks = existingBookIndex >=0 ? [...store.books().toSpliced( existingBookIndex, 1, book)] : [...store.books(), book];            
+            patchState(store, (state) =>({ 
+                ...state, 
+                books: updatedBooks,
+                stock: {...store.stock(), [book.id]:  0}
+             }));                   
+        }
     })),
     withHooks({
         onInit: (store) => {

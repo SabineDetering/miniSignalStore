@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, signal, WritableSignal } from '@angular/core';
 import { BookWithStoredAmount, Id } from '../store/bookshop-types';
 import { BookShopStore } from '../store/bookshop.store';
 import { TableModule } from 'primeng/table';
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule, TableModule, InputNumberModule, ButtonModule],
   templateUrl: './storage.component.html',
   styleUrl: './storage.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StorageComponent {  
   protected store = inject(BookShopStore);

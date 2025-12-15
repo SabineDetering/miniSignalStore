@@ -1,5 +1,15 @@
 export type Id = number;
 
+export interface IBook {
+    id: Id;
+    title: string;     
+    author: string;
+    price: number;
+    numberOfPages: number;
+    weightInGramm: number;
+    description: string;  
+}
+
 export class Book {
  private static  currentId = 0;
  public id: Id;
@@ -10,7 +20,7 @@ constructor(
     public price: number, 
     public numberOfPages: number, 
     public weightInGramm: number, 
-    public description ='' 
+    public description = '' 
 ){
     Book.currentId +=1;
     this.id = Book.currentId;

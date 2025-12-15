@@ -1,4 +1,4 @@
-import { Component, inject, signal, effect, WritableSignal } from '@angular/core';
+import { Component, inject, signal, effect, WritableSignal, ChangeDetectionStrategy } from '@angular/core';
 import { BookShopStore } from '../store/bookshop.store';
 import { FormsModule } from '@angular/forms';
 import { Id } from '../store/bookshop-types';
@@ -10,6 +10,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
   imports: [FormsModule, InputNumberModule, ButtonModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShopComponent {
   store = inject(BookShopStore);
