@@ -14,7 +14,18 @@
             <td>{{ book.title }}</td>
             <td>{{ book.weightInGramm }}</td>
             <td>{{ book.storedAmount }}</td>
-            <td> <p-button>Lieferung erhalten</p-button></td>
+            <td>  
+                <div class="delivery-wrapper">
+                    <p-inputnumber type="number" 
+                        buttonLayout="horizontal" 
+                        [(ngModel)]="amountsReceived[book.id]"  
+                        [showButtons]="true" 
+                        [min]="1"
+                        incrementButtonIcon="pi pi-plus"
+                        decrementButtonIcon="pi pi-minus" />
+                    <p-button  (click)="store.received(book.id, amountsReceived[book.id]())">Lieferung erhalten</p-button>
+                </div>
+            </td>
         </tr>
     </ng-template>
 </p-table>

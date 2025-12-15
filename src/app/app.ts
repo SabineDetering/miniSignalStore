@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 
 @Component({
@@ -12,7 +13,7 @@ export class App {
   protected readonly title = signal('Mini Signal Store');
   private readonly router = inject(Router);
 
-  protected navItems = [
+  protected navItems: MenuItem[] = [
             {               
                 items: [
                     {

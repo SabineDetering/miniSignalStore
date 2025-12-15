@@ -23,10 +23,13 @@
                     fluid
                     [(ngModel)]="amountsToOrder[book.id]"  
                     [showButtons]="true" 
-                    [min]="1"  />
+                    [step]="1" spinnerMode="horizontal"
+                    [min]="1" 
+                    incrementButtonIcon="pi pi-plus"
+                    decrementButtonIcon="pi pi-minus" />
                   <p-button 
                     [disabled] ="amountsToOrder[book.id]() > stockQuantity"
-                    (click)="store.order(book.id, amountsToOrder[book.id]())">
+                    (click)="store.ordered(book.id, amountsToOrder[book.id]())">
                     Bestellen
                   </p-button>
                 </div>

@@ -7,7 +7,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-shop.component',
-  imports: [FormsModule,InputNumberModule, ButtonModule],
+  imports: [FormsModule, InputNumberModule, ButtonModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss',
 })

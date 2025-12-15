@@ -1,1 +1,14 @@
-<p>products.component works!</p>
+<div class="products-container">
+    @for(book of store.books(); track book){
+      <div class=" book-wrapper ">
+        <div class="book">
+            <div class="id">ID: {{ book.id }}</div>
+            <div class="title"> Titel: {{ book.title }}</div>
+            <div class="author"> Autor: {{ book.author }}</div>
+            <div class="description"> Beschreibung: {{ book.description }}</div>
+                <div class="pages"> Seiten: {{ book.numberOfPages }}</div>
+                <div class="price"> Preis: {{ book.price.toFixed(2) }} €</div>
+            </div>
+      </div>
+    }
+</div>

@@ -8,3 +8,17 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+// Custom styles for PrimeNG components
+.side-panel{
+    .p-menu{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    }
+
+    .pi{
+        font-size: 24px;
+        margin-right: 10px;
+    }
+}

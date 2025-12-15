@@ -12,7 +12,7 @@ export interface BookShopState {
   
 export const emptyBookShopState: BookShopState = {
     books:[],
-    stock:  {},
+    stock: {},
     orders:[],
 };
 
@@ -24,9 +24,12 @@ export const BookShopStore = signalStore(
             availableBooks: computed(()=> store.books().filter(book => store.stock()[book.id] >0))
     })),
     withMethods(store =>({
-        order( bookId: Id, amount: number ){
+        ordered( bookId: Id, amount: number ){
             patchState(store, (state) =>({ ...state, stock: {...store.stock(), [bookId]: store.stock()[bookId] - amount}}))
-        }
+        },
+        received( bookId: Id, amount: number ){
+            patchState(store, (state) =>({ ...state, stock: {...store.stock(), [bookId]: store.stock()[bookId] + amount}}))
+        }        
     })),
     withHooks({
         onInit: (store) => {
