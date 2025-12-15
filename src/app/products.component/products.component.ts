@@ -30,7 +30,7 @@ export class ProductsComponent {
     required(schemaPath.title, { message: 'Title is required' })
     required(schemaPath.author, { message: 'Author is required' })
     min(schemaPath.price, 0.00, { message: 'Price must be at least 0' })
-    min(schemaPath.numberOfPages, 1, { message: 'Number of pages must be at least 1' })
+    min(schemaPath.numberOfPages, 0, { message: 'Number of pages must be at least 0' })
     min(schemaPath.weightInGramm, 0, { message: 'Weight must be at least 0 gram' })
   });
 

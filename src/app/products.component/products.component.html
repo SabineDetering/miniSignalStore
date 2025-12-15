@@ -64,6 +64,7 @@
             <p-inputnumber 
             fluid
             id="numberOfPages"
+            [allowEmpty]="false"
             [field]="bookForm.numberOfPages"/>
             <label for="numberOfPages">Seiten</label>
             @if (bookForm.numberOfPages().touched() && bookForm.numberOfPages().invalid()) {
@@ -74,6 +75,7 @@
             <p-inputnumber 
             fluid
             id="weightInGramm"
+            [allowEmpty]="false"
             [field]="bookForm.weightInGramm"/>
             <label for="weightInGramm">Gewicht (g)</label>
             @if (bookForm.weightInGramm().touched() && bookForm.weightInGramm().invalid()) {
@@ -86,6 +88,7 @@
             currency="EUR" 
             fluid
             id="price"
+            [allowEmpty]="false"
             [field]="bookForm.price"/>
             <label for="price">Preis</label>
             @if (bookForm.price().touched() && bookForm.price().invalid()) {
